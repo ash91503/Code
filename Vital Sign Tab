@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Signs Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #701b1b;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #701b1b;
+        }
+        #records {
+            text-align: left;
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        #records li {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Vital Signs Tracker</h2>
+        <label for="heartRate">Heart Rate (bpm):</label>
+        <input type="number" id="heartRate" placeholder="Enter heart rate">
+
+        <label for="bloodPressure">Blood Pressure (Systolic/Diastolic):</label>
+        <input type="text" id="bloodPressure" placeholder="e.g., 120/80">
+
+        <label for="temperature">Temperature (°C):</label>
+        <input type="number" step="0.1" id="temperature" placeholder="Enter temperature">
+
+        <button onclick="saveRecord()">Save Record</button>
+
+        <h3>Records</h3>
+        <ul id="records"></ul>
+    </div>
+
+    <script>
+        function saveRecord() {
+            const heartRate = document.getElementById('heartRate').value.trim();
+            const bloodPressure = document.getElementById('bloodPressure').value.trim();
+            const temperature = document.getElementById('temperature').value.trim();
+
+            if (!heartRate || !bloodPressure || !temperature) {
+                alert("Please enter all vital signs.");
+                return;
+            }
+
+            const timestamp = new Date().toLocaleString();
+            const record = `${timestamp} - Heart Rate: ${heartRate} bpm | Blood Pressure: ${bloodPressure} | Temp: ${temperature} °C`;
+
+            const recordsList = document.getElementById('records');
+            const listItem = document.createElement('li');
+            listItem.textContent = record;
+            recordsList.appendChild(listItem);
+
+            document.getElementById('heartRate').value = '';
+            document.getElementById('bloodPressure').value = '';
+            document.getElementById('temperature').value = '';
+        }
+    </script>
+</body>
+</html>
