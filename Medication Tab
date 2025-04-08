@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            background-color: #701b1b;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .container label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: bold;
+        }
+
+        .container input,
+        .container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .container button {
+            padding: 10px 20px;
+            background-color: #701b1b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover {
+            background-color: #701b1b;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .table-actions button {
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .table-actions button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h2>Medication Tracker</h2>
+    <div class="container">
+        <label for="name">Medication Name:</label>
+        <select id="name">
+            <option value="Acetaminophen">Acetaminophen</option>
+            <option value="Acetazolamide">Acetazolamide</option>
+            <option value="Albuterol">Albuterol</option>
+            <option value="Albuterol Sulfate">Albuterol Sulfate</option>
+            <option value="Ampicillin">Ampicillin</option>
+            <option value="Atorvastatin">Atorvastatin</option>
+            <option value="Bisacodyl">Bisacodyl</option>
+            <option value="Captopril">Captopril</option>
+            <option value="Cefazolin">Cefazolin</option>
+            <option value="Celecoxib">Celecoxib</option>
+            <option value="Children's Acetaminophen">Children's Acetaminophen</option>
+            <option value="Citalopram">Citalopram</option>
+            <option value="Clopidogrel">Clopidogrel</option>
+            <option value="Diphenhydramine HCL, Lidocaine HCL, Aluminum Hydroxide, Magnesium Hydroxide, Simethicone">Diphenhydramine HCL, Lidocaine HCL, Aluminum Hydroxide, Magnesium Hydroxide, Simethicone</option>
+            <option value="Docusate Sodium">Docusate Sodium</option>
+            <option value="Ducocate Sodium">Ducocate Sodium</option>
+            <option value="Famotidine">Famotidine</option>
+            <option value="Furosemide">Furosemide</option>
+            <option value="Haloperidol">Haloperidol</option>
+            <option value="Heparin Sodium">Heparin Sodium</option>
+            <option value="Human Insulin Regular">Human Insulin Regular</option>
+            <option value="Influenza Vaccine">Influenza Vaccine</option>
+            <option value="Insulin Glargine">Insulin Glargine</option>
+            <option value="Ipratropium Bromide MDI">Ipratropium Bromide MDI</option>
+            <option value="Lanoxin">Lanoxin</option>
+            <option value="Lithium Carbonate">Lithium Carbonate</option>
+            <option value="Lorazepam">Lorazepam</option>
+            <option value="Magnesium">Magnesium</option>
+            <option value="Metoprolol">Metoprolol</option>
+            <option value="Morphine Sulfate">Morphine Sulfate</option>
+            <option value="Nitro">Nitro</option>
+            <option value="NPH Insulin">NPH Insulin</option>
+            <option value="Ondansetron">Ondansetron</option>
+            <option value="Oxycodone IR">Oxycodone IR</option>
+            <option value="Oxymetazoline HCL">Oxymetazoline HCL</option>
+            <option value="Pantoprazole">Pantoprazole</option>
+            <option value="Phytonadione">Phytonadione</option>
+            <option value="Pilocarpine 2%">Pilocarpine 2%</option>
+            <option value="Potassium Chloride">Potassium Chloride</option>
+            <option value="Prenatal Vitamin">Prenatal Vitamin</option>
+            <option value="Regular Insulin">Regular Insulin</option>
+            <option value="Risperdone">Risperdone</option>
+            <option value="Sterile Water Eye Drops">Sterile Water Eye Drops</option>
+            <option value="Tramadol">Tramadol</option>
+            <option value="Tuberculin Protein Dilute">Tuberculin Protein Dilute</option>
+            <option value="Vancomycin">Vancomycin</option>
+            <option value="Warfarin">Warfarin</option>
+        </select>
+
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="dosage">
+
+        <label for="usage">Route:</label>
+        <input type="text" id="usage">
+
+        <label for="prescription">Frequency:</label>
+        <input type="text" id="prescription">
+
+        <label for="comments">Comments:</label>
+        <input type="text" id="comments" placeholder="Optional">
+
+        <label for="manufacturer">Name Of Student:</label>
+        <input type="text" id="manufacturer">
+
+        <button onclick="addMedication()">Add Medication</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Medication Name</th>
+                <th>Dosage</th>
+                <th>Route</th>
+                <th>Frequency</th>
+                <th>Comments</th>
+                <th>Name of Student</th>
+                <th>Time Perscribed</th>
+            </tr>
+        </thead>
+        <tbody id="medicationTable"></tbody>
+    </table>
+
+    <script>
+        function addMedication() {
+            let name = document.getElementById("name").value;
+            let dosage = document.getElementById("dosage").value;
+            let manufacturer = document.getElementById("manufacturer").value;
+            let usage = document.getElementById("usage").value;
+            let prescription = document.getElementById("prescription").value;
+            let comments = document.getElementById("comments").value || "";
+            let timePerscribed = new Date().toLocaleString();  // Adding the time when the medication was added
+
+            if (!name || !dosage || !manufacturer || !usage || !prescription) {
+                alert("Please enter all medication details!");
+                return;
+            }
+
+            let table = document.getElementById("medicationTable");
+            let row = table.insertRow();
+
+            row.insertCell(0).innerText = name;
+            row.insertCell(1).innerText = dosage;
+            row.insertCell(2).innerText = usage;
+            row.insertCell(3).innerText = prescription;
+            row.insertCell(4).innerText = comments;
+            row.insertCell(5).innerText = manufacturer;
+            row.insertCell(6).innerText = timePerscribed;
+        }
+    </script>
+</body>
+</html>
